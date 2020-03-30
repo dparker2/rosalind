@@ -1,3 +1,12 @@
 #!/bin/bash
 
-cat data/$1.txt | python $1.py 2>&1 | tee output/$1.txt
+bin="python"
+if [ -z "$2" ]
+then
+    id=$1
+else
+    bin=$1
+    id=$2
+fi
+
+cat data/$id.txt | $bin $id.py 2>&1 | tee output/$id.txt
